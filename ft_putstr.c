@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_putnbr_fd.c                                      :+:    :+:           */
+/*   ft_putstr_fd.c                                      :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: fluthra <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2026/03/20 14:19:24 by fluthra        #+#    #+#                */
-/*   Updated: 2026/03/24 14:16:04 by fluthra        ########   odam.nl        */
+/*   Created: 2026/03/20 14:15:07 by fluthra        #+#    #+#                */
+/*   Updated: 2026/03/24 14:15:40 by fluthra        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_put_char_fd(char c, int fd)
+void	ft_putstr_fd(char *s)
 {
-	write(fd, &c, 1);
-}
+	int	i;
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	int	mod;
-	int	div;
-
-	mod = n % 10;
-	div = n / 10;
-	if (n < 0)
+	i = 0;
+	while (s[i])
 	{
-		write(fd, "-", 1);
-		mod = -mod;
-		div = -div;
+		write(1, &s[i], 1);
+		i++;
 	}
-	if (div)
-		ft_putnbr_fd(div, fd);
-	ft_put_char_fd(mod + 48, fd);
 }

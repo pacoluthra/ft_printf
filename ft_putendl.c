@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_putstr_fd.c                                      :+:    :+:           */
+/*   ft_putendl_fd.c                                     :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: fluthra <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2026/03/20 14:15:07 by fluthra        #+#    #+#                */
-/*   Updated: 2026/03/24 14:15:40 by fluthra        ########   odam.nl        */
+/*   Created: 2026/03/20 14:17:08 by fluthra        #+#    #+#                */
+/*   Updated: 2026/03/24 14:15:51 by fluthra        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putendl(char *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		write(fd, &s[i], 1);
+		write(1, &s[i], 1);
 		i++;
 	}
+	write(1, "\n", 1);
 }
