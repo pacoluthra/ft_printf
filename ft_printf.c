@@ -16,40 +16,41 @@ int	check_conversion(const char str, va_list vargs)
 {
 	if (str == 'c')
 		return(ft_putchar(va_args(vargs)));
-	if (str == 's')
+	else if (str == 's')
 		ft_putstr();
-	if (str == 'p')
+	else if (str == 'p')
 		ft_putptr();
-	if (str == 'd' || str == 'i')
+	else if (str == 'd' || str == 'i')
 		ft_putnbr();
-	if (str == 'u')
+	else if (str == 'u')
 		ft_putnbr();
-	if (str == 'x' || str == 'X')
+	else if (str == 'x' || str == 'X')
 		ft_putnbrhexa();
-	if (str == '%')
+	else if (str == '%')
 		ft_putchar('%');
-	return (0);
+	else
+		return (0);
 }
 
 
 int	ft_printf(const char *str, ...)
 {
 	va_list vargs;
-	int	i;
+	int count;
 	int	conv_count;
 
 	va_start(vargs, str);
-	i = 0;
-	while(str[i])
+	count = 0;
+	while(*str)
 	{
 		conv_count = 0;
-		if(str[i] == '%')
+		if(*str == '%')
 		{
-			i++;
-			conv_count = check_conversion(str[i], vargs);
+			str++;
+			conv_count = check_conversion(str, vargs);
+			count += conv_count;
 		}
-		i += conv_count;
-		i++;
+		str++;
 		
 	}
 	va_end(vargs);
