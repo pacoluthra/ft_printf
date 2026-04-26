@@ -17,10 +17,10 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-void	ft_putchar(char c);
-void	ft_putendl(char *s);
-void	ft_putnbr(int n);
-void	ft_putstr(char *s);
+int	ft_putchar(char c);
+int	ft_putendl(char *s);
+int	ft_putnbr(int n);
+int	ft_putstr(char *s);
 
 
 

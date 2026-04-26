@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putendl(char *s)
+int	ft_putendl(char *s)
 {
 	int	i;
 
@@ -23,4 +23,5 @@ void	ft_putendl(char *s)
 		i++;
 	}
 	write(1, "\n", 1);
+	return (i);
 }
