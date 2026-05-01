@@ -22,12 +22,15 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-void	ft_putnbr_hexa(int n)
+void	ft_putnbr_hexa(int n, char conv)
 {
 	const char		*base;
 	unsigned int	num;
 
-	base = "0123456789ABCDEF";
+	if (conv == 'X')
+		base = "0123456789ABCDEF";
+	else if (conv == 'x')
+		base = "0123456789abcdef";
 	if (n < 0)
 	{
 		write(1, "-", 1);
@@ -36,15 +39,7 @@ void	ft_putnbr_hexa(int n)
 	else
 		num = n;
 	if (num >= 16)
-		ft_putnbr_hexa(num / 16);
+		ft_putnbr_hexa(num / 16, conv);
 	write(1, &base[num % 16], 1);
 }
 
-int	main(void)
-{
-	int	n;
-
-	n = 2147483647;
-	ft_putnbr_hexa(n);
-	return (0);
-}
