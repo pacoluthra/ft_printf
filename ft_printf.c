@@ -15,7 +15,7 @@
 int	check_conversion(const char str, va_list vargs)
 {
 	if (str == 'c')
-		return(ft_putchar(va_args(vargs)));
+		return (ft_putchar(va_args(vargs)));
 	else if (str == 's')
 		ft_putstr();
 	else if (str == 'p')
@@ -32,26 +32,24 @@ int	check_conversion(const char str, va_list vargs)
 		return (0);
 }
 
-
 int	ft_printf(const char *str, ...)
 {
-	va_list vargs;
-	int count;
-	int	conv_count;
+	va_list	vargs;
+	int		count;
+	int		conv_count;
 
 	va_start(vargs, str);
 	count = 0;
-	while(*str)
+	while (*str)
 	{
 		conv_count = 0;
-		if(*str == '%')
+		if (*str == '%')
 		{
 			str++;
 			conv_count = check_conversion(str, vargs);
 			count += conv_count;
 		}
 		str++;
-		
 	}
 	va_end(vargs);
 	return (0);
