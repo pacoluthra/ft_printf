@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 // #include <stdio.h>
 
 int	ft_strlen(const char *str)
@@ -23,30 +24,19 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_putnbr_hexa(int n, char conv)
+int	ft_putnbr_hexa(size_t n, char conv)
 {
 	const char		*base;
-	unsigned int	num;
-	int				count;
 	int				tot_count;
 
+	tot_count = 0;
 	if (conv == 'X')
 		base = "0123456789ABCDEF";
-	else if (conv == 'x')
-		base = "0123456789abcdef";
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		num = -n;
-	}
 	else
-		num = n;
-	if (num >= 16)
-	{
-		count = ft_putnbr_hexa(num / 16, conv);
-		tot_count += count;
-	}
-	write(1, &base[num % 16], 1);
+		base = "0123456789abcdef";
+	if (n >= 16)
+		tot_count += ft_putnbr_hexa(n / 16, conv);
+	write(1, &base[n % 16], 1);
 	tot_count++;
 	return (tot_count);
 }
@@ -56,7 +46,3 @@ int	ft_putnbr_hexa(int n, char conv)
 // 	printf("%i", ft_putnbr_hexa(2147, 'X'));
 // 	return (0);
 // }
-
-
-
-

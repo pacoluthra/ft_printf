@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	check_conversion(const char conv, va_list vargs)
 {
 	if (conv == 'c')
-		return (ft_putchar(va_args(vargs)));
+		return (ft_putchar(va_arg(vargs, int)));
 	else if (conv == 's')
-		return (ft_putstr(va_args(vargs)));
+		return (ft_putstr(va_arg(vargs, char *)));
 	else if (conv == 'p')
-		return (ft_putptr(va_args(vargs)));
+		return (ft_putptr(va_arg(vargs, void *)));
 	else if (conv == 'd' || conv == 'i')
-		return (ft_putnbr(va_args(vargs)));
+		return (ft_putnbr(va_arg(vargs, int)));
 	else if (conv == 'u')
-		return (ft_putnbr(va_args(vargs)));
+		return (ft_putnbr(va_arg(vargs, unsigned int)));
 	else if (conv == 'x' || conv == 'X')
-		return (ft_putnbrhexa(va_args(vargs), conv));
+		return (ft_putnbr_hexa(va_arg(vargs, unsigned int), conv));
 	else if (conv == '%')
 		return (ft_putchar('%'));
 	else
@@ -42,7 +42,6 @@ int	ft_printf(const char *str, ...)
 	count = 0;
 	while (*str)
 	{
-		conv_count = 0;
 		if (*str == '%')
 		{
 			str++;

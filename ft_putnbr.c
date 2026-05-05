@@ -17,20 +17,20 @@ static void	ft_put_char(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putnbr(int n)
+int	ft_putnbr(long n)
 {
-	int	mod;
-	int	div;
+	int		tot_count;
 
-	mod = n % 10;
-	div = n / 10;
+	tot_count = 0;
 	if (n < 0)
 	{
 		write(1, "-", 1);
-		mod = -mod;
-		div = -div;
+		n = -n;
+		tot_count++;
 	}
-	if (div)
-		ft_putnbr(div);
-	ft_put_char(mod + 48);
+	if (n >= 10)
+		tot_count += ft_putnbr(n / 10);
+	ft_put_char((n % 10) + '0');
+	tot_count++;
+	return (tot_count);
 }

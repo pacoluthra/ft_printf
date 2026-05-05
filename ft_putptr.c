@@ -14,8 +14,8 @@
 
 int	ft_putptr(void *ptr)
 {
-	if (ptr == NULL)
-		ft_putstr("nil");
+	if (ptr == NULL || ptr == 0)
+		return (ft_putstr("(nil)"));
 	ft_putstr("0x");
-	return (ft_putnbr_hexa((unsigned int)ptr, 'x'));
+	return (ft_putnbr_hexa((size_t)ptr, 'x') + 2);
 }
