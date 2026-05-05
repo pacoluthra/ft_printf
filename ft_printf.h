@@ -17,9 +17,11 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-int	ft_putchar(char c);
-int	ft_putendl(char *s);
-int	ft_putnbr(int n);
-int	ft_putstr(char *s);
-
+int		ft_putchar(char c);
+// int	ft_putendl(char *s);
+int		ft_putstr(char *s);
+int		ft_putnbr_hexa(int n, char conv);
+int		ft_putptr(void *ptr);
+void	ft_putnbr(int n);
+int	ft_printf(const char *str, ...);
 #endif
